@@ -18,9 +18,12 @@ class Books extends React.Component {
       (jsonifiedResponse) => {
         console.log(jsonifiedResponse);
         console.log(jsonifiedResponse.items);
+        console.log(jsonifiedResponse.items[0],jsonifiedResponse.items[1],jsonifiedResponse.items[2]);
+        // console.log(jsonifiedResponse.items[key]);
         this.setState({
           isLoaded: true,
-          books: jsonifiedResponse.items
+          books: [jsonifiedResponse.items[0].volumeInfo,jsonifiedResponse.items[1].volumeInfo,jsonifiedResponse.items[2].volumeInfo,jsonifiedResponse.items[3].volumeInfo,jsonifiedResponse.items[4].volumeInfo,jsonifiedResponse.items[5].volumeInfo,jsonifiedResponse.items[6].volumeInfo,jsonifiedResponse.items[7].volumeInfo,jsonifiedResponse.items[8].volumeInfo,jsonifiedResponse.items[9].volumeInfo]
+          
         });
       })
       //  .then(
@@ -54,7 +57,8 @@ class Books extends React.Component {
             {books.map((book, index) =>
               <li key={index}>
                 <h3>{book.title}</h3>
-                <p>{book.abstract}</p>
+                <p>{book.authors}</p>
+                <p>{book.description}</p>
               </li>
             )}
           </ul>
