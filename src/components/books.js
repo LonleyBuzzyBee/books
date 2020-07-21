@@ -10,13 +10,20 @@ class Books extends React.Component {
     };
   }
   makeApiCall = () => {
-    fetch(`api-key=${process.env.REACT_APP_API_KEY}`)
+    fetch("https://google-books.p.rapidapi.com/volumes", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "google-books.p.rapidapi.com",
+        "x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`
+      }
+    })
+   
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
           this.setState({
             isLoaded: true,
-            headlines: jsonifiedResponse.results
+            books: jsonifiedResponse.results
           });
         })
       .catch((error) => {
