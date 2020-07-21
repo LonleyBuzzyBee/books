@@ -17,9 +17,10 @@ class Books extends React.Component {
     .then(
       (jsonifiedResponse) => {
         console.log(jsonifiedResponse);
+        console.log(jsonifiedResponse.items);
         this.setState({
           isLoaded: true,
-          books: jsonifiedResponse
+          books: jsonifiedResponse.items
         });
       })
       //  .then(
