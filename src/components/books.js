@@ -10,22 +10,23 @@ class Books extends React.Component {
     };
   }
   makeApiCall = () => {
-    fetch("https://google-books.p.rapidapi.com/volumes", {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "google-books.p.rapidapi.com",
-        "x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`
-      }
-    })
-   
-      .then(response => response.json())
-      .then(
-        (jsonifiedResponse) => {
-          this.setState({
-            isLoaded: true,
-            books: jsonifiedResponse.results
-          });
-        })
+    console.log(`${process.env.REACT_APP_API_KEY}`);
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=cooking+terms&key=${process.env.REACT_APP_API_KEY}`) 
+    
+    .then(response => response.json())
+    .then(
+      (jsonifiedResponse) => {
+        console.log(jsonifiedResponse);
+        this.setState({
+          isLoaded: true,
+          books: jsonifiedResponse
+        });
+      })
+      //  .then(
+      // (jsonifiedResponse) => {
+      //   console.log('json:', jsonifiedResponse);
+      //   dispatch(getParksSuccess(jsonifiedResponse.results));
+      // } 
       .catch((error) => {
         this.setState({
           isLoaded: true,
