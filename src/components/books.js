@@ -12,13 +12,7 @@ class Books extends React.Component {
     };
   }
 
- Svg = () => {
-  return (
-    <svg style={{
-      border: "2px solid gold"
-    }} />
-  )
-}
+
 
 
 // const Circle = () => {
@@ -82,28 +76,21 @@ makeApiCall = () => {
       return (
         <React.Fragment>
           <h1>Different cook books available</h1>
-          <ul>
+          {/* <ul> */}
             {books.map((book, index) =>
-              // <svg/>
-//               <text x="20" y="20"
-//          font-family="sans-serif"
-//         font-size="20px"
-//         text-anchor="middle"
-//          fill="red">Hello!</text>
-              <li key={index}>
-                <text>{book.title}</text>
+            
+              // <li key={index}>
+            <React.Fragment>
+              <svg width="500px" height="500px">
+                <circle cx="150" cy="70" r="50" width="200" height="200" fill="cornflowerblue"><text></text></circle>
+                <text key={index} text-anchor="middle" x="150" y="70" width="100px" height="300px">{book.title}<br/>{book.authors}<br/>{book.description}</text>
+                </svg>
                 <br/>
-                <text text-anchor="middle">{book.authors}</text>
-                <br/>
-                <text>{book.description}</text>
-                
-              <svg>
-                <Circle/>
-              </svg>
-              </li>
+              </React.Fragment>
+              // </li>
                 
                 )}
-          </ul>
+          {/* </ul> */}
         </React.Fragment>
       );
     }
